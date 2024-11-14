@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Cortex Debug (ST-Link)",
+        "type": "cortex-debug",
+        "request": "launch",
+        "servertype": "stutil",      // or "openocd" if using OpenOCD
+        "executable": "./build/DriverSetUp.elf", // Adjust to your .elf file path
+        "device": "STM32C031C6",
+        "runToEntryPoint": "main",
+        "cwd": "${workspaceRoot}"
+      }
+    ]
+  }
+  

@@ -55,7 +55,8 @@ Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_i2c.c \
 Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_i2c_ex.c \
 Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_uart.c \
 Drivers/STM32C0xx_HAL_Driver/Src/stm32c0xx_hal_uart_ex.c \
-Core/Src/system_stm32c0xx.c  
+Core/Src/system_stm32c0xx.c \
+Drivers/SelfBuiltDrivers/src/Gpio_Driver.c
 
 # ASM sources
 ASM_SOURCES =  \

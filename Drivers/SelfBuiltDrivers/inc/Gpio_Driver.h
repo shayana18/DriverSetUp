@@ -1,3 +1,4 @@
+#pragma once
 /*
 implementing a header inclusion gaurd so a particular header file is only included once in a build 
 */
@@ -7,7 +8,10 @@ implementing a header inclusion gaurd so a particular header file is only includ
 
 // includes 
 #include <stdint.h>
-#include "stm32c0xx_hal_def.h"
+#include "../../STM32C0xx_HAL_Driver/Inc/stm32c0xx_hal_def.h"
+#include "../../CMSIS/Device/ST/STM32C0xx/Include/stm32c011xx.h"
+
+
 
 
 /* to do define macros for
@@ -41,6 +45,8 @@ implementing a header inclusion gaurd so a particular header file is only includ
 #define GPIO_PIN_15         ((uint16_t)0x8000)
 #define GPIO_PIN_SELECT_ALL ((uint16_t)0xFFFF)
 
+#define GPIO_PIN_MASK       ((uint16_t)0xFFFF)
+
 // MODE TYPES //
 
 /*
@@ -73,23 +79,8 @@ Config Encode 0x00000XYZ
 
 // ENSURING PIN CONFIG MEETS SPECIFICATON // 
 
-#define ISPIN(PIN) ((PIN == GPIO_PIN_0)  || \
-                    (PIN == GPIO_PIN_1)  || \
-                    (PIN == GPIO_PIN_2)  || \
-                    (PIN == GPIO_PIN_3)  || \
-                    (PIN == GPIO_PIN_4)  || \
-                    (PIN == GPIO_PIN_5)  || \
-                    (PIN == GPIO_PIN_6)  || \
-                    (PIN == GPIO_PIN_7)  || \
-                    (PIN == GPIO_PIN_8)  || \
-                    (PIN == GPIO_PIN_9)  || \
-                    (PIN == GPIO_PIN_10) || \
-                    (PIN == GPIO_PIN_11) || \
-                    (PIN == GPIO_PIN_12) || \
-                    (PIN == GPIO_PIN_13) || \
-                    (PIN == GPIO_PIN_14) || \
-                    (PIN == GPIO_PIN_15)    \
-                    )
+#define ISPIN(PIN) ((PIN & ~GPIO_PIN_MASK) == 0U || \
+                    (PIN & GPIO_PIN_MASK) != 0U)
 
 #define ISMODE(MODE) ((MODE == GPIO_MODE_INPUT)     || \
                       (MODE == GPIO_MODE_OUTPUT_PP) || \
@@ -138,7 +129,7 @@ typedef struct{
 
     uint32_t alternateFunction; 
 
-}pinConfig; 
+}GpioConfig; 
 
 
 

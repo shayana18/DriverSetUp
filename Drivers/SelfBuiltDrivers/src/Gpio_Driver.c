@@ -8,3 +8,8 @@
 3. GPIO_writePin: set or clear specified pin 
 4. GPIO_toggle: invert whatever state the pin is in 
 */
+
+void selfBuilt_gpioInit(GPIO_TypeDef *gpio_port, GpioConfig *config){
+    assert_param(IS_GPIO_ALL_INSTANCE(gpio_port));
+    assert()
+}
